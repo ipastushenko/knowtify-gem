@@ -100,8 +100,11 @@ module Knowtify
     # }
     def transactional_email(event, contacts=[],http_request_options={},api_key=nil)
       options = {
-        :path => "#{config.base_path}/data/edit",
-        :params => {:data => contacts},
+        :path => "#{config.base_path}/contacts/upsert",
+        :params => {
+          :event => event,
+          :contacts => contacts
+        },
         :http_request_options => http_request_options,
         :api_key => api_key
       }
